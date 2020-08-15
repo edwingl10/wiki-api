@@ -76,7 +76,17 @@ app.route("/articles/:articleTitle")
             res.send(err);
         }
     });
+})
+.delete(function(req, res){
+    Article.deleteOne({title: req.params.articleTitle}, function(err){
+        if(!err){
+            res.send("Successfully deleted the corresponding article.");
+        }else{
+            res.send(err);
+        }
+    }); 
 });
+
 
 /*
 //GET route
